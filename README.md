@@ -10,8 +10,65 @@ to write your content.
 ## Formats Included:
 
 - BunyanFormat (https://github.com/trentm/node-bunyan)
+```json
+{
+    "time": "2021-02-04T23:01:00.781Z", 
+    "name": "root", 
+    "pid": 15504, 
+    "level": 40, 
+    "msg": "TEST", 
+    "hostname": "Sophie", 
+    "v": 0
+}
+```
 - JSONFormat 
+```json
+{
+    "logger": "root", 
+    "timestamp": "2021-02-04T23:01:46.435011",
+    "message": "TEST",
+    "level": "ERROR",
+    "levelno": 40,
+    "function": "<module>",
+    "process": {
+        "number": 13316,
+        "name": "MainProcess"
+    },
+    "thread": {
+        "number": 10704, 
+        "name": "MainThread"
+    }, 
+    "v": 1
+}
+```
 - AdvJSONFormat (For Verbose JSON Logging)
+```json
+{
+    "logger": "root",
+    "timestamp": "2021-02-04T23:02:52.522958",
+    "rtimestamp": "2021-02-04T23:02:37.518800",
+    "message": "TEST",
+    "level": "ERROR", 
+    "levelno": 40,
+    "location": {
+        "pathname": "<FULL_PATH>\\test_logger.py", 
+        "module": "test_logger", 
+        "filename": "test_logger.py", 
+        "function": "<module>", 
+        "line": 16
+    }, 
+    "process": {
+        "number": 2300, 
+        "name": "MainProcess"
+    }, 
+    "thread": {
+        "number": 12516,
+        "name": "MainThread"
+    }, 
+    "v": 1
+}
+```
+
 
 ## Installation 
 
@@ -40,7 +97,7 @@ logger = logging.getLogger()
 
 logHandler = logging.StreamHandler(sys.stdout)
 
-formatter = AdvJSONFormat()
+formatter = pylogformat.AdvJSONFormat()
 logHandler.setFormatter(formatter)
 
 logger.addHandler(logHandler)

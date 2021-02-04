@@ -22,7 +22,7 @@ class AdvJSONFormat(logging.Formatter):
             ).isoformat(),
             message=getattr(record, "msg"),
             level=getattr(record, "levelname"),
-            lnumber=getattr(record, "levelno"),
+            levelno=getattr(record, "levelno"),
             location=dict(
                 pathname=getattr(record, "pathname"),
                 module=getattr(record, "module"),

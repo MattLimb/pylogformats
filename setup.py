@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name="pyLogFormats", # Replace with your own username
-    version="0.0.1",
+    version="0.1.1",
     author="Matt Limb",
     author_email="matt.limb17@gmail.com",
     description="A collection of useful log formats for Python Loggers.",

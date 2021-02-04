@@ -19,7 +19,7 @@ class JSONFormat(logging.Formatter):
             timestamp=datetime.fromtimestamp(getattr(record, "created")).isoformat(),
             message=getattr(record, "msg"),
             level=getattr(record, "levelname"),
-            lnumber=getattr(record, "levelno"),
+            levelno=getattr(record, "levelno"),
             function=getattr(record, "funcName"),
             process=dict(
                 number=getattr(record, "process"), 
