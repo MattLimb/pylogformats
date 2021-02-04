@@ -72,13 +72,7 @@ to write your content.
 
 ## Installation 
 
-Clone the git repo
-
-```sh
-git clone git@github.com:MattLimb/pylogformats.git
-```
-
-Install 
+Install via pip
 
 ```sh
 python3 -m pip install pylogformats
@@ -89,7 +83,7 @@ python3 -m pip install pylogformats
 Use the formatter as you would any other Python Formatter:
 
 ```python
-import pylogformat 
+import pylogformats
 import logging
 import sys
 
@@ -97,7 +91,7 @@ logger = logging.getLogger()
 
 logHandler = logging.StreamHandler(sys.stdout)
 
-formatter = pylogformat.AdvJSONFormat()
+formatter = pylogformats.JSONFormat()
 logHandler.setFormatter(formatter)
 
 logger.addHandler(logHandler)
