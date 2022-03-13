@@ -1,7 +1,6 @@
 import logging
 import json
-import platform
-from datetime import datetime, timedelta
+from datetime import datetime
 
 BASELINE = vars(logging.LogRecord(*[None for _ in range(9)]))
 
@@ -14,10 +13,13 @@ class JSONFormat(logging.Formatter):
         Params:
         record: The LogRecord instance created by the log event.
         """
+        
+        formatted_message = getattr(record, "msg") % getattr(record, "args", tuple())
+
         fr = dict(
             logger=getattr(record, "name"),
             timestamp=datetime.fromtimestamp(getattr(record, "created")).isoformat(),
-            message=getattr(record, "msg"),
+            message=formatted_message,
             level=getattr(record, "levelname"),
             levelno=getattr(record, "levelno"),
             function=getattr(record, "funcName"),

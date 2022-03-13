@@ -14,13 +14,16 @@ class AdvJSONFormat(logging.Formatter):
         Params:
         record: The LogRecord instance created by the log event.
         """
+
+        formatted_message = getattr(record, "msg") % getattr(record, "args", tuple())
+
         fr = dict(
             logger=getattr(record, "name"),
             timestamp=datetime.fromtimestamp(getattr(record, "created")).isoformat(),
             rtimestamp=datetime.fromtimestamp(
                 getattr(record, "created") - getattr(record, "relativeCreated")
             ).isoformat(),
-            message=getattr(record, "msg"),
+            message=formatted_message,
             level=getattr(record, "levelname"),
             levelno=getattr(record, "levelno"),
             location=dict(
