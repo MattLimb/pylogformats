@@ -5,13 +5,13 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name="pyLogFormats", # Replace with your own username
-    version="0.1.2",
+    version="0.2.0",
     author="Matt Limb",
     author_email="matt.limb17@gmail.com",
     description="A collection of useful log formats for Python Loggers.",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/pypa/sampleproject",
+    url="https://github.com/MattLimb/pylogformats",
     packages=setuptools.find_packages(),
     classifiers=[
         "Programming Language :: Python :: 3",
