@@ -9,7 +9,10 @@ class BunyanFormat(logging.Formatter):
     """ A Simple Bunyan JSON Format """
     def format(self, record):
 
-        formatted_message = getattr(record, "msg") % getattr(record, "args", tuple())
+        args = getattr(record, "args", None)
+
+        if args is not None:
+            formatted_message = getattr(record, "msg") % getattr(record, "args", tuple())
 
         fr = dict(
             time=datetime.fromtimestamp(getattr(record, "created")).strftime("%Y-%m-%dT%H:%M:%S.%f")[:-3] + "Z",

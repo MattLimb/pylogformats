@@ -15,7 +15,10 @@ class AdvJSONFormat(logging.Formatter):
         record: The LogRecord instance created by the log event.
         """
 
-        formatted_message = getattr(record, "msg") % getattr(record, "args", tuple())
+        args = getattr(record, "args", None)
+
+        if args is not None:
+            formatted_message = getattr(record, "msg") % getattr(record, "args", tuple())
 
         fr = dict(
             logger=getattr(record, "name"),
