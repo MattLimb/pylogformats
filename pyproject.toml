@@ -22,6 +22,5 @@ homepage = "https://github.com/MattLimb/pylogformats"
 name = "pylogformats"
 
 [build-system]
-build_wheel = true
 requires = ["flit_core <4"]
 build-backend = "flit_core.buildapi"
