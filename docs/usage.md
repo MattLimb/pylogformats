@@ -1,7 +1,13 @@
 # Usage
 
-```{eval-rst}
-.. click:: pylogformats.__main__:main
-    :prog: pylogformats
-    :nested: full
-```
+## Using `logging.basicConfig`
+
+TODO
+
+## Using `logging.dictConfig`
+
+TODO
+
+## Manual Setup
+
+TODO

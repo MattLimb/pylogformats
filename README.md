@@ -39,7 +39,7 @@ $ pip install pylogformats
 
 ## Usage
 
-Please see the [Command-line Reference] for details.
+- TODO
 
 ## Contributing
 
@@ -70,4 +70,3 @@ This project was generated from [@cjolowicz]'s [Hypermodern Python Cookiecutter]
 
 [license]: https://github.com/MattLimb/pylogformats/blob/main/LICENSE
 [contributor guide]: https://github.com/MattLimb/pylogformats/blob/main/CONTRIBUTING.md
-[command-line reference]: https://pylogformats.readthedocs.io/en/latest/usage.html
