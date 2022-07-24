@@ -7,10 +7,10 @@
    :members:
 ```
 
-## pylogformats.json
+<!-- ## pylogformats.json
 
 ```{eval-rst}
 .. automodule:: pylogformats.json
    :members: BunyanFormat, JsonFormat, AdvJsonFormat
 
-```
+``` -->

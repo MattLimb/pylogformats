@@ -23,11 +23,66 @@
 
 ## Features
 
-- TODO
-
-## Requirements
-
-- TODO
+- JsonFormatters
+  - AdvJsonFormat
+  ```json
+  {
+    "logger": "root",
+    "timestamp": "2021-02-04T23:02:52.522958",
+    "rtimestamp": "2021-02-04T23:02:37.518800",
+    "message": "TEST",
+    "level": "ERROR",
+    "levelno": 40,
+    "location": {
+      "pathname": "<FULL_PATH>\\test_logger.py",
+      "module": "test_logger",
+      "filename": "test_logger.py",
+      "function": "<module>",
+      "line": 16
+    },
+    "process": {
+      "number": 2300,
+      "name": "MainProcess"
+    },
+    "thread": {
+      "number": 12516,
+      "name": "MainThread"
+    },
+    "v": 1
+  }
+  ```
+  - BunyanFormat
+  ```json
+  {
+    "time": "2021-02-04T23:01:00.781Z",
+    "name": "root",
+    "pid": 15504,
+    "level": 40,
+    "msg": "TEST",
+    "hostname": "HerculesPC",
+    "v": 0
+  }
+  ```
+  - JsonFormat
+  ```json
+  {
+    "logger": "root",
+    "timestamp": "2021-02-04T23:01:46.435011",
+    "message": "TEST",
+    "level": "ERROR",
+    "levelno": 40,
+    "function": "<module>",
+    "process": {
+      "number": 13316,
+      "name": "MainProcess"
+    },
+    "thread": {
+      "number": 10704,
+      "name": "MainThread"
+    },
+    "v": 1
+  }
+  ```
 
 ## Installation
 
@@ -39,7 +94,31 @@ $ pip install pylogformats
 
 ## Usage
 
-- TODO
+For an explanation of this, and more usage instructions please visit the [documentation](https://pylogformats.readthedocs.io/usage.html)
+
+```py
+import logging
+import sys
+
+from pylogformats import JsonFormat
+
+# Create the logging handler
+handler = logging.StreamHandler(sys.stdout)
+
+# Add the formatter class to the handler we just created.
+handler.setFormatter(JsonFormat())
+
+# Use basicConfig to setup the loggers.
+logging.basicConfig(handlers=[handler], level=logging.DEBUG)
+
+# Use the normal logging methods to see formatted logs in your terminal
+logging.critical("Critical Log")
+logging.error("Error Log")
+logging.warning("Warning Log")
+logging.info("Info Log")
+logging.debug("Debug Log")
+
+```
 
 ## Contributing
 
