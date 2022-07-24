@@ -4,7 +4,6 @@ import logging
 import platform
 import json
 from datetime import datetime
-from typing import Any, Dict
 
 from pylogformats.baseline import BASELINE
 from pylogformats.types import LOG_INLINE_DICT_TYPE
@@ -66,13 +65,8 @@ information about the event being logged.
             "v": 0
         }
 
-        extras: Dict[str, Any] = {}
-
         for key, value in vars(record).items():
             if key not in BASELINE:
-                extras[key] = value
-
-        if len(extras) != 0:
-            formatted_record.update(extras)
+                formatted_record[key] = value
 
         return json.dumps(formatted_record)

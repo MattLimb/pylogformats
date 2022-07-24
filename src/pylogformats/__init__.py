@@ -1,11 +1,9 @@
 """Easy to Use Formatter Classes for the Python `logging` module."""
 
-from . import json
-
+from .json import AdvJsonFormat, BunyanFormat, JsonFormat
 
 __all__ = [
-    "json",
-    "json.AdvJsonFormatter",
-    "json.BunyanFormatter",
-    "json.JsonFormatter",
+    "AdvJsonFormat",
+    "BunyanFormat",
+    "JsonFormat",
 ]
