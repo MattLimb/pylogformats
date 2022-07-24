@@ -1,14 +1,18 @@
 """Test cases for the Bunyan Formatter."""
 
-import logging
-import json
 import datetime
+import json
+import logging
 import re
-from typing import Dict, Optional, Union, Tuple
+from typing import Dict
+from typing import Optional
+from typing import Tuple
+from typing import Union
 
 import pytest
 
 from pylogformats.json import BunyanFormat
+
 
 USE_DATETIME = datetime.datetime.utcnow()
 
@@ -108,10 +112,12 @@ def test_bunyan_correct_values(
     """Test that the bunyan formatter contains all relevant values."""
     formatted_log: str = bunyan_formatter.format(log_record)
 
-    assert (re.search(
-        r"\"time\": \"\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}.\d{3}Z\"",
-        formatted_log
-    ) is not None)
+    assert (
+        re.search(
+            r"\"time\": \"\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}.\d{3}Z\"", formatted_log
+        )
+        is not None
+    )
 
     # Ensure that the string is a valid JSON string
     valid_json: Dict[str, object] = json.loads(formatted_log)
@@ -127,10 +133,10 @@ def test_bunyan_correct_values(
 
     # Ensure the correct values are present
 
-    assert (re.search(
-        r"\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}.\d{3}Z",
-        valid_json["time"]
-    ) is not None)
+    assert (
+        re.search(r"\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}.\d{3}Z", valid_json["time"])
+        is not None
+    )
     time_expected: str = USE_DATETIME.strftime("%Y-%m-%dT%H:%M:%S.%f")[:-3] + "Z"
     assert valid_json["time"] == time_expected
     assert valid_json["name"] == "root"

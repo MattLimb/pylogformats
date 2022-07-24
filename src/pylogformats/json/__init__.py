@@ -62,7 +62,7 @@ Availiable JSON Formatters:
     :name: json-format
 
     {
-        "logger": "root", 
+        "logger": "root",
         "timestamp": "2021-02-04T23:01:46.435011",
         "message": "TEST",
         "level": "ERROR",
@@ -73,20 +73,17 @@ Availiable JSON Formatters:
             "name": "MainProcess"
         },
         "thread": {
-            "number": 10704, 
+            "number": 10704,
             "name": "MainThread"
-        }, 
+        },
         "v": 1
     }
 
 """
 
+from .advanced import AdvJsonFormat
 from .bunyan import BunyanFormat
 from .simple import JsonFormat
-from .advanced import AdvJsonFormat
 
-__all__ = [
-    "BunyanFormat",
-    "JsonFormat",
-    "AdvJsonFormat"
-]
+
+__all__ = ["BunyanFormat", "JsonFormat", "AdvJsonFormat"]

@@ -1,8 +1,8 @@
 """Bunyan JSON Format."""
 
+import json
 import logging
 import platform
-import json
 from datetime import datetime
 
 from pylogformats.baseline import BASELINE
@@ -32,7 +32,12 @@ class BunyanFormat(logging.Formatter):
     {"time": ..., "name": "root", "pid": ..., "level": 10, "msg": "Test Log", \
 "hostname": ..., "v": 0}
     >>>
-    >>> logging.debug("Test Log With Extra", extra={"whatami": "An Extra"}) #doctest: +ELLIPSIS
+    >>> logging.debug(
+    ...     "Test Log With Extra",
+    ...     extra={
+    ...         "whatami": "An Extra"
+    ...     }
+    ... ) #doctest: +ELLIPSIS
     {"time": ..., "name": "root", "pid": ..., "level": 10, "msg": "Test Log \
 With Extra", "hostname": ..., "v": 0, "whatami": "An Extra"}
 
@@ -44,6 +49,7 @@ With Extra", "hostname": ..., "v": 0, "whatami": "An Extra"}
     and the keys that use them will have real, accurate values in them.
 
     """
+
     def format(self, record: logging.LogRecord) -> str:
         """Format LogRecords into a Bunyan JSON String.
 
@@ -56,13 +62,16 @@ information about the event being logged.
         formatted_message: str = record.getMessage()
 
         formatted_record: LOG_INLINE_DICT_TYPE = {
-            "time": datetime.fromtimestamp(record.created).strftime("%Y-%m-%dT%H:%M:%S.%f")[:-3] + "Z",
+            "time": datetime.fromtimestamp(record.created).strftime(
+                "%Y-%m-%dT%H:%M:%S.%f"
+            )[:-3]
+            + "Z",
             "name": record.name,
             "pid": record.process or 0,
             "level": record.levelno,
             "msg": formatted_message,
             "hostname": platform.node(),
-            "v": 0
+            "v": 0,
         }
 
         for key, value in vars(record).items():

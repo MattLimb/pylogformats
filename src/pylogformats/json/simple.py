@@ -1,7 +1,7 @@
 """Standard JSON Format."""
 
-import logging
 import json
+import logging
 from datetime import datetime
 
 from pylogformats.baseline import BASELINE
@@ -69,13 +69,13 @@ information about the event being logged.
             "function": record.funcName,
             "process": {
                 "number": record.process or 0,
-                "name": record.processName or "unknown"
+                "name": record.processName or "unknown",
             },
             "thread": {
                 "number": record.thread or 0,
-                "name": record.threadName or "unknown"
+                "name": record.threadName or "unknown",
             },
-            "v": 1
+            "v": 1,
         }
 
         for key, value in vars(record).items():

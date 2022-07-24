@@ -6,6 +6,7 @@ in by a user using the `extra` key
 
 from typing import List
 
+
 BASELINE: List[str] = [
     "args",
     "asctime",
@@ -27,5 +28,5 @@ BASELINE: List[str] = [
     "relativeCreated",
     "stack_info",
     "thread",
-    "threadName"
+    "threadName",
 ]
