@@ -4,9 +4,10 @@ import json
 import logging
 import platform
 from datetime import datetime
+from typing import Any
+from typing import Dict
 
 from pylogformats.baseline import BASELINE
-from pylogformats.types import LOG_INLINE_DICT_TYPE
 
 
 class BunyanFormat(logging.Formatter):
@@ -63,7 +64,7 @@ information about the event being logged.
         """
         formatted_message: str = record.getMessage()
 
-        formatted_record: LOG_INLINE_DICT_TYPE = {
+        formatted_record: Dict[str, Any] = {
             "time": datetime.fromtimestamp(record.created).strftime(
                 "%Y-%m-%dT%H:%M:%S.%f"
             )[:-3]

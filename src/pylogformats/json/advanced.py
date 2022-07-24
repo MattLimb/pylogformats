@@ -3,9 +3,10 @@
 import json
 import logging
 from datetime import datetime
+from typing import Any
+from typing import Dict
 
 from pylogformats.baseline import BASELINE
-from pylogformats.types import LOG_INLINE_DICT_TYPE
 
 
 class AdvJsonFormat(logging.Formatter):
@@ -65,7 +66,7 @@ information about the event being logged.
         :return: A string representation of the Bunyan formatted logging event.
         :rtype: str
         """
-        formatted_message: LOG_INLINE_DICT_TYPE = {
+        formatted_message: Dict[str, Any] = {
             "logger": record.name,
             "timestamp": datetime.fromtimestamp(record.created).isoformat(),
             "rtimestamp": datetime.fromtimestamp(
