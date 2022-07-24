@@ -28,7 +28,7 @@ class BunyanFormat(logging.Formatter):
     >>> logging.basicConfig(handlers=[stream_handler], level=logging.DEBUG)
     >>>
     >>> # The test log
-    >>> logging.debug("Test Log") #doctest: +ELLIPSIS
+    >>> logging.debug("Test Log")
     {"time": ..., "name": "root", "pid": ..., "level": 10, "msg": "Test Log", \
 "hostname": ..., "v": 0}
     >>>
@@ -37,9 +37,11 @@ class BunyanFormat(logging.Formatter):
     ...     extra={
     ...         "whatami": "An Extra"
     ...     }
-    ... ) #doctest: +ELLIPSIS
+    ... )
     {"time": ..., "name": "root", "pid": ..., "level": 10, "msg": "Test Log \
 With Extra", "hostname": ..., "v": 0, "whatami": "An Extra"}
+    >>> # Clean up Logging
+    >>> logging.getLogger().removeHandler(stream_handler)
 
     In the last line of the example code, there is an output of a sample log.
     This log shows some values as an ellipsis (...). This is because it is a Doctest
@@ -68,7 +70,7 @@ information about the event being logged.
             + "Z",
             "name": record.name,
             "pid": record.process or 0,
-            "level": record.levelno,
+            "level": record.levelno or 0,
             "msg": formatted_message,
             "hostname": platform.node(),
             "v": 0,

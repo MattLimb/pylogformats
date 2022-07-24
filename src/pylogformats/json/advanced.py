@@ -22,27 +22,30 @@ class AdvJsonFormat(logging.Formatter):
     >>>
     >>> # Setup the Stream Handler Using AdvJsonFormat
     >>> stream_handler = logging.StreamHandler(sys.stdout)
-    >>> stream_handler.setFormatter(pylogformats.json.JsonFormat())
+    >>> stream_handler.setFormatter(pylogformats.json.AdvJsonFormat())
     >>>
     >>> # Setup the logging config using the stream hander and the DEBUG logging level
     >>> logging.basicConfig(handlers=[stream_handler], level=logging.DEBUG)
     >>>
     >>> # The test log
-    >>> logging.debug("Test Log") #doctest: +ELLIPSIS
-    { "logger": "root", "timestamp": ..., "rtimestamp": ..., "message": "Test Log", \
-"level": "DEBUG", "levelno": 10, "location": { "pathname": ..., "module": ..., \
-"filename": ..., "function": "<module>", "line": ... }, "process": { "number": ..., \
-"name": "MainProcess" }, "thread": { "number": ...,"name": "MainThread" }, "v": 1 }
+    >>> logging.debug("Test Log")
+    {"logger": "root", "timestamp": ..., "rtimestamp": ..., "message": "Test Log", \
+"level": "DEBUG", "levelno": 10, "location": {"pathname": ..., "module": ..., \
+"filename": ..., "function": ..., "line": ...}, "process": {"number": ..., "name": \
+"MainProcess"}, "thread": {"number": ..., "name": "MainThread"}, "v": 1}
     >>>
     >>> logging.debug(
     ...     "Test Log With Extra",
     ...     extra={"whatami": "An Extra"}
-    ... ) #doctest: +ELLIPSIS
-    { "logger": "root", "timestamp": ..., "rtimestamp": ..., "message": \
-"Test Log With Extra", "level": "DEBUG", "levelno": 10, "location": { \
-"pathname": ..., "module": ..., "filename": ..., "function": "<module>", \
-"line": ... }, "process": { "number": ..., "name": "MainProcess" }, \
-"thread": { "number": ...,"name": "MainThread" }, "v": 1, "whatami": "An Extra" }
+    ... )
+    {"logger": "root", "timestamp": ..., "rtimestamp": ..., "message": \
+"Test Log With Extra", "level": "DEBUG", "levelno": 10, "location": {\
+"pathname": ..., "module": ..., "filename": ..., "function": ..., \
+"line": ...}, "process": {"number": ..., "name": "MainProcess"}, \
+"thread": {"number": ..., "name": "MainThread"}, "v": 1, "whatami": "An Extra"}
+    >>>
+    >>> # Clean up Logging
+    >>> logging.getLogger().removeHandler(stream_handler)
 
     In the last line of the example code, there is an output of a sample log.
     This log shows some values as an ellipsis (...). This is because it is a Doctest

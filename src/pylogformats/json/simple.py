@@ -28,19 +28,21 @@ class JsonFormat(logging.Formatter):
     >>> logging.basicConfig(handlers=[stream_handler], level=logging.DEBUG)
     >>>
     >>> # The test log
-    >>> logging.debug("Test Log") #doctest: +ELLIPSIS
-    { "logger": "root", "timestamp": ..., "message": "Test Log", "level": "DEBUG", \
-"levelno": 10, "function": "<module>", "process": { "number": ..., "name": \
-"MainProcess" }, "thread": { "number": ..., "name": "MainThread" }, "v": 1 }
+    >>> logging.debug("Test Log")
+    {"logger": "root", "timestamp": ..., "message": "Test Log", "level": "DEBUG", \
+"levelno": 10, "function": "<module>", "process": {"number": ..., "name": \
+"MainProcess"}, "thread": {"number": ..., "name": "MainThread"}, "v": 1}
     >>>
     >>> logging.debug(
     ...     "Test Log With Extra",
     ...     extra={"whatami": "An Extra"}
-    ... ) #doctest: +ELLIPSIS
-    { "logger": "root", "timestamp": ..., "message": "Test Log With Extra", \
-"level": "DEBUG", "levelno": 10, "function": "<module>", "process": { \
-"number": ..., "name": "MainProcess" }, "thread": { "number": ..., "name": \
-"MainThread" }, "v": 1 }
+    ... )
+    {"logger": "root", "timestamp": ..., "message": "Test Log With Extra", \
+"level": "DEBUG", "levelno": 10, "function": "<module>", "process": {\
+"number": ..., "name": "MainProcess"}, "thread": {"number": ..., "name": \
+"MainThread"}, "v": 1, "whatami": "An Extra"}
+    >>> # Clean up Logging
+    >>> logging.getLogger().removeHandler(stream_handler)
 
     In the last line of the example code, there is an output of a sample log.
     This log shows some values as an ellipsis (...). This is because it is a Doctest

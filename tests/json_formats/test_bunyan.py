@@ -22,7 +22,7 @@ def log_record() -> logging.LogRecord:
     """Fixture for creating a log record to format."""
     record_data: Dict[str, Optional[Union[str, int]]] = {
         "name": "root",
-        "level": 10,
+        "levelno": 10,
         "pathname": "tests/json/bunyan.py",
         "lineno": 30,
         "msg": "A demo log message",
@@ -41,7 +41,7 @@ def args_log_record() -> logging.LogRecord:
     """Fixture for creating a log record to format."""
     record_data: Dict[str, Optional[Union[str, int, Tuple[str]]]] = {
         "name": "root",
-        "level": 10,
+        "levelno": 10,
         "pathname": "tests/json/bunyan.py",
         "lineno": 30,
         "msg": "A message with %s",
@@ -61,7 +61,7 @@ def extra_log_record() -> logging.LogRecord:
     """Fixture for creating a log record to format."""
     record_data: Dict[str, Optional[Union[str, int]]] = {
         "name": "root",
-        "level": 10,
+        "levelno": 10,
         "pathname": "tests/json/bunyan.py",
         "lineno": 30,
         "msg": "A extra log message",
