@@ -6,6 +6,7 @@ import platform
 from datetime import datetime
 from typing import Any
 from typing import Dict
+from typing import Optional
 
 from pylogformats.baseline import BASELINE
 
@@ -23,7 +24,7 @@ class BunyanFormat(logging.Formatter):
     >>>
     >>> # Setup the Stream Handler Using Bunyan
     >>> stream_handler = logging.StreamHandler(sys.stdout)
-    >>> stream_handler.setFormatter(pylogformats.json.BunyanFormat())
+    >>> stream_handler.setFormatter(pylogformats.BunyanFormat())
     >>>
     >>> # Setup the logging config using the stream hander and the DEBUG logging level
     >>> logging.basicConfig(handlers=[stream_handler], level=logging.DEBUG)
@@ -44,7 +45,7 @@ With Extra", "hostname": ..., "v": 0, "whatami": "An Extra"}
     >>> # Clean up Logging
     >>> logging.getLogger().removeHandler(stream_handler)
 
-    In the last line of the example code, there is an output of a sample log.
+    In some lines of the example code, there is an output of a sample log.
     This log shows some values as an ellipsis (...). This is because it is a Doctest
     codeblock which helps ensure code examples are up-to-date when code changes.
 
@@ -52,6 +53,25 @@ With Extra", "hostname": ..., "v": 0, "whatami": "An Extra"}
     and the keys that use them will have real, accurate values in them.
 
     """
+
+    def formatTime(self, record: logging.LogRecord, datefmt: Optional[str] = None) -> str:
+        """Format LogRecord Times into the correct formatted string String.
+
+        :param record: An instance of *logging.LogRecord* which contains all relevant \
+information about the event being logged.
+        :type record: logging.LogRecord
+        :param datefmt: A valid `datetime.strftime()` format string.
+        :type datefmt: str | None
+        :return: A string representation of the Bunyan formatted logging event.
+        :rtype: str
+        """
+        if datefmt is None:
+            datefmt = "%Y-%m-%dT%H:%M:%S.%f"
+
+        created_timestamp: float = record.created
+        created_datetime: datetime = datetime.fromtimestamp(created_timestamp)
+
+        return created_datetime.strftime(datefmt)
 
     def format(self, record: logging.LogRecord) -> str:
         """Format LogRecords into a Bunyan JSON String.
@@ -65,10 +85,7 @@ information about the event being logged.
         formatted_message: str = record.getMessage()
 
         formatted_record: Dict[str, Any] = {
-            "time": datetime.fromtimestamp(record.created).strftime(
-                "%Y-%m-%dT%H:%M:%S.%f"
-            )[:-3]
-            + "Z",
+            "time": (self.formatTime(record, "%Y-%m-%dT%H:%M:%S.%f"))[:-3] + "Z",
             "name": record.name,
             "pid": record.process or 0,
             "level": record.levelno or 0,

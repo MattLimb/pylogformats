@@ -23,7 +23,7 @@ class AdvJsonFormat(logging.Formatter):
     >>>
     >>> # Setup the Stream Handler Using AdvJsonFormat
     >>> stream_handler = logging.StreamHandler(sys.stdout)
-    >>> stream_handler.setFormatter(pylogformats.json.AdvJsonFormat())
+    >>> stream_handler.setFormatter(pylogformats.AdvJsonFormat())
     >>>
     >>> # Setup the logging config using the stream hander and the DEBUG logging level
     >>> logging.basicConfig(handlers=[stream_handler], level=logging.DEBUG)
@@ -48,7 +48,7 @@ class AdvJsonFormat(logging.Formatter):
     >>> # Clean up Logging
     >>> logging.getLogger().removeHandler(stream_handler)
 
-    In the last line of the example code, there is an output of a sample log.
+    In some lines of the example code, there is an output of a sample log.
     This log shows some values as an ellipsis (...). This is because it is a Doctest
     codeblock which helps ensure code examples are up-to-date when code changes.
 
