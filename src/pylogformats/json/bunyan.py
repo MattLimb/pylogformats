@@ -54,7 +54,10 @@ With Extra", "hostname": ..., "v": 0, "whatami": "An Extra"}
 
     """
 
-    def formatTime(
+    # Following line ignores Flake8 because this overrides a pre-existing
+    # function which is formatted using CamelCase instead of the PEP8 approved
+    # snake case. This allows it to comply with the logging.LogFormatter subclass. 
+    def formatTime(  # noqa: N802
         self, record: logging.LogRecord, datefmt: Optional[str] = None
     ) -> str:
         """Format LogRecord Times into the correct formatted string String.
