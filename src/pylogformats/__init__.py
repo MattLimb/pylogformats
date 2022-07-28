@@ -89,6 +89,7 @@ from .json import AdvJsonFormat
 from .json import BunyanFormat
 from .json import JsonFormat
 from .text import CompactTextFormat
+from .text import SimpleTextFormat
 
 
 # Legacy Aliases
@@ -105,6 +106,7 @@ __all__ = [
     "AdvJSONFormat",
     # Text Formats
     "CompactTextFormat",
+    "SimpleTextFormat",
     # Additonal Module Imports
     "json",
     "text",
