@@ -81,6 +81,28 @@ Availiable JSON Formatters:
         "v": 1
     }
 
+Availiable Text Formatters:
+
+- `Simple Text Format <#pylogformats.SimpleTextFormat>`_
+
+.. code-block:: text
+    :caption: Example Text Log
+    :linenos:
+    :lineno-start: 1
+    :name: simple-text-format
+
+    [DEBUG] [2021-02-04 23:01:46] A Test Debug Log
+
+- `Compact Text Format <#pylogformats.CompactTextFormat>`_
+
+.. code-block:: text
+    :caption: Example Text Log
+    :linenos:
+    :lineno-start: 1
+    :name: compact-text-format
+
+    [D 2021-02-04 23:01:46 l:root f:<module> ln:5] A Test Log [includesExtras:Yes]
+
 """
 
 from . import json
@@ -96,6 +118,8 @@ from .text import SimpleTextFormat
 
 JSONFormat = JsonFormat
 AdvJSONFormat = AdvJsonFormat
+SimpleFormat = SimpleTextFormat
+CompactFormat = CompactTextFormat
 
 __all__ = [
     # Json Formats
@@ -107,6 +131,8 @@ __all__ = [
     # Text Formats
     "CompactTextFormat",
     "SimpleTextFormat",
+    "CompactFormat",
+    "SimpleFormat",
     # Additonal Module Imports
     "json",
     "text",

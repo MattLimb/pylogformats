@@ -15,22 +15,22 @@ class SimpleTextFormat(logging.Formatter):
     >>> import sys
     >>> import pylogformats
     >>>
-    >>> # Setup the Stream Handler Using JsonFormat
+    >>> # Setup the Stream Handler Using SimpleTextFormat
     >>> stream_handler = logging.StreamHandler(sys.stdout)
-    >>> stream_handler.setFormatter(pylogformats.CompactTextFormat())
+    >>> stream_handler.setFormatter(pylogformats.SimpleTextFormat())
     >>>
     >>> # Setup the logging config using the stream hander and the DEBUG logging level
     >>> logging.basicConfig(handlers=[stream_handler], level=logging.DEBUG)
     >>>
     >>> # The test log
     >>> logging.debug("Test Log")
-    [D ... ... l:root f:... ln:...] Test Log
+    [DEBUG ... ...] Test Log
     >>>
     >>> logging.debug(
     ...     "Test Log With Extra",
     ...     extra={"whatami": "An Extra"}
     ... )
-    [D ... ... l:root f:... ln:...] Test Log With Extra [whatami:An Extra]
+    [DEBUG ... ...] Test Log With Extra
     >>> # Clean up Logging
     >>> logging.getLogger().removeHandler(stream_handler)
 

@@ -138,10 +138,14 @@ def test_simple_with_extras(
     formatted_log: str = simple_formatter.format(extra_log_record)
 
     assert (
-        re.search((
-            r"\[(CRITICAL|ERROR|WARNING|INFO|DEBUG){1}\]"
-            r" \[\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\] .*"
-        ), formatted_log) is not None
+        re.search(
+            (
+                r"\[(CRITICAL|ERROR|WARNING|INFO|DEBUG){1}\]"
+                r" \[\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\] .*"
+            ),
+            formatted_log,
+        )
+        is not None
     )
 
     assert "str_extra" not in formatted_log

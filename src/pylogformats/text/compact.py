@@ -17,7 +17,7 @@ class CompactTextFormat(logging.Formatter):
     >>> import sys
     >>> import pylogformats
     >>>
-    >>> # Setup the Stream Handler Using JsonFormat
+    >>> # Setup the Stream Handler Using CompactTextFormat
     >>> stream_handler = logging.StreamHandler(sys.stdout)
     >>> stream_handler.setFormatter(pylogformats.CompactTextFormat())
     >>>
