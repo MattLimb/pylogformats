@@ -61,10 +61,12 @@ information about the event being logged.
             f"ln:{record.lineno}]"
         )
 
-        extras: str = " ".join([
-            f"[{key}:{value}]"
-            for key, value in vars(record).items()
-            if key not in BASELINE
-        ])
+        extras: str = " ".join(
+            [
+                f"[{key}:{value}]"
+                for key, value in vars(record).items()
+                if key not in BASELINE
+            ]
+        )
 
         return f"{preamble} {record.getMessage()} {extras}"

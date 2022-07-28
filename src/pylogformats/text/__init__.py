@@ -2,4 +2,5 @@
 
 from .compact import CompactTextFormat
 
+
 __all__ = ["CompactTextFormat"]

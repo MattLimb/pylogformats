@@ -84,12 +84,12 @@ Availiable JSON Formatters:
 """
 
 from . import json
+from . import text
 from .json import AdvJsonFormat
 from .json import BunyanFormat
 from .json import JsonFormat
-
-from . import text
 from .text import CompactTextFormat
+
 
 # Legacy Aliases
 
@@ -107,5 +107,5 @@ __all__ = [
     "CompactTextFormat",
     # Additonal Module Imports
     "json",
-    "text"
+    "text",
 ]

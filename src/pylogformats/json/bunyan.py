@@ -54,7 +54,9 @@ With Extra", "hostname": ..., "v": 0, "whatami": "An Extra"}
 
     """
 
-    def formatTime(self, record: logging.LogRecord, datefmt: Optional[str] = None) -> str:
+    def formatTime(
+        self, record: logging.LogRecord, datefmt: Optional[str] = None
+    ) -> str:
         """Format LogRecord Times into the correct formatted string String.
 
         :param record: An instance of *logging.LogRecord* which contains all relevant \

@@ -99,10 +99,16 @@ def test_compact_correct_format(
     """Test that the Compact Text formatter matches the regular expressions."""
     formatted_log: str = compact_formatter.format(log_record)
 
-    assert re.search((
-        r"\[[CEWID]{1} \d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}"
-        r" l:\w+ f:.+ ln:\d+\] .+[ ]{0,1}\[.+\]+"
-    ), formatted_log) is not None
+    assert (
+        re.search(
+            (
+                r"\[[CEWID]{1} \d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}"
+                r" l:\w+ f:.+ ln:\d+\] .+[ ]{0,1}\[.+\]+"
+            ),
+            formatted_log,
+        )
+        is not None
+    )
 
 
 def test_compact_correct_values(
@@ -131,10 +137,16 @@ def test_compact_with_extras(
     """Test that the Compact Text formatter contains extra information."""
     formatted_log: str = compact_formatter.format(extra_log_record)
 
-    assert re.search((
-        r"\[[CEWID]{1} \d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}"
-        r" l:\w+ f:.+ ln:\d+\] .+[ ]{0,1}\[.+\]+"
-    ), formatted_log) is not None
+    assert (
+        re.search(
+            (
+                r"\[[CEWID]{1} \d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}"
+                r" l:\w+ f:.+ ln:\d+\] .+[ ]{0,1}\[.+\]+"
+            ),
+            formatted_log,
+        )
+        is not None
+    )
 
     assert "[str_extra:Extra 1]" in formatted_log
     assert "[int_extra:2]" in formatted_log
