@@ -107,7 +107,7 @@ $ pip install pylogformats
 
 ## Usage
 
-For an explanation of this, and more usage instructions please visit the [documentation](https://pylogformats.readthedocs.io/usage.html)
+For an explanation of this, and more usage instructions please visit the [documentation](https://pylogformats.readthedocs.io/en/latest/usage.html)
 
 ```py
 import logging
