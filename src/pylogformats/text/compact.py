@@ -46,7 +46,7 @@ class CompactTextFormat(logging.Formatter):
     """
 
     def format(self, record: logging.LogRecord) -> str:
-        """Format LogRecords into an simplified JSON log format.
+        """Format LogRecords into an Compact Text log format.
 
         :param record: An instance of *logging.LogRecord* which contains all relevant \
 information about the event being logged.
