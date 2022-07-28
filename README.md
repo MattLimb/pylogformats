@@ -23,7 +23,7 @@
 
 ## Features
 
-- JsonFormatters
+- Json Formatters
   - AdvJsonFormat
   ```json
   {
@@ -82,6 +82,19 @@
     },
     "v": 1
   }
+  ```
+- Text Formatters
+
+  - SimpleTextFormat
+
+  ```text
+  [DEBUG] [2021-02-04 23:01:46] A Test Debug Log
+  ```
+
+  - CompactTextFormat
+
+  ```text
+  [D 2021-02-04 23:01:46 l:root f:<module> ln:5] A Test Log [includesExtras:Yes]
   ```
 
 ## Installation

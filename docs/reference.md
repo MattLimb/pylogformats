@@ -11,6 +11,6 @@
 
 ```{eval-rst}
 .. automodule:: pylogformats.json
-   :members: BunyanFormat, JsonFormat, AdvJsonFormat
+   :members: BunyanFormat, JsonFormat, AdvJsonFormat, SimpleTextFormat, CompactTextFormat
 
 ``` -->
