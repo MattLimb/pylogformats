@@ -1,0 +1,14 @@
+{
+  "_output_dir": "K:\\python\\pylogformats",
+  "_template": "gh:cjolowicz/cookiecutter-hypermodern-python",
+  "author": "Matt Limb",
+  "copyright_year": "2022",
+  "development_status": "Development Status :: 4 - Beta",
+  "email": "matt.limb17@gmail.com",
+  "friendly_name": "PyLogFormats",
+  "github_user": "MattLimb",
+  "license": "MIT",
+  "package_name": "pylogformats",
+  "project_name": "pylogformats",
+  "version": "1.0.0"
+}
