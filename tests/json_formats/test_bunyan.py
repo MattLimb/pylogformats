@@ -173,3 +173,35 @@ def test_bunyan_extras(
     assert valid_json["int_extra"] == 2
     assert "float_extra" in valid_json
     assert valid_json["float_extra"] == 1.5
+
+
+def test_bunyan_date_formatter(
+    log_record: logging.LogRecord, bunyan_formatter: logging.Formatter
+) -> None:
+    """Test that the bunyan time formatter creates valid times."""
+    no_format_time: str = bunyan_formatter.formatTime(log_record)
+    assert isinstance(no_format_time, str)
+    assert re.search(
+        r"\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{6}",
+        no_format_time
+    )
+
+    just_date_format: str = bunyan_formatter.formatTime(
+        log_record,
+        "%Y-%M-%d"
+    )
+    assert isinstance(just_date_format, str)
+    assert re.search(
+        r"\d{4}-\d{2}-\d{2}",
+        just_date_format
+    ) is not None
+
+    just_time_format: str = bunyan_formatter.formatTime(
+        log_record,
+        "%H:%m:%S"
+    )
+    assert isinstance(just_time_format, str)
+    assert re.search(
+        r"\d{2}:\d{2}:\d{2}",
+        just_time_format
+    ) is not None
